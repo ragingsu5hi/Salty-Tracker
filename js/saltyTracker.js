@@ -96,7 +96,6 @@ function update()
                 }
             //Upset tracker
             var upset = diff * 2;
-            console.log("diff: " +diff+ " upset threshold: " +upset);
             //simulate upset
             //diff += diff * 3;
             if(diff >= upset)
