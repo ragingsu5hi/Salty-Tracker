@@ -18,6 +18,7 @@ setTimeout(update,9000)
 ///Checks for a new match and if betting is available
 function update()
 {
+    console.log('%c------------------------------------[INITIALIZING TRACKER]-----------------------------------', 'background: #222; color: #bada55');
     //Local balance variables
     var winstreak = document.getElementById("betStreak").innerHTML; //winrate
     var balance = document.getElementById("balance").innerHTML; //grabs balance from html
@@ -33,7 +34,6 @@ function update()
         {
             if(logcount <= 1)
                 {
-                    console.log('%c------------------------------------[INITIALIZING TRACKER]-----------------------------------', 'background: #222; color: #bada55');
                     console.log("Your current balance is: " +balance+ " Winstreak: " +winstreak);
                     console.log("---------------------------------------------------------------------------------------------");
                     logcount += 1
