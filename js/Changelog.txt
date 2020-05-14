@@ -1,0 +1,134 @@
+------------------ChangedLog------------------
+-----Changed equation:-----
+to------- diff = prebal -= postbal
+from----- diff = globalPrebal -= postbal
+
+-----Changed if statments to use bal from postbal-----
+
+-----Changed balance:-----
+to------- balnocomma = balance.replace(/,/g,"");
+from----- balance = balance.replace(/,/g,"");
+
+-----Changed no salt change else to:-----
+if(globalPrebal == bal)
+
+-----Added text to console log of both conditions
++ " from: "+balance
+
+-----Added upset calculator-----
+
+-----Moving your balance below win/loss from below current fighters-----
+
+-----Added 25 "-" to every seporator-----
+
+-----Moved var diff = null; from under var postbal = bal; and added it to the win conditions
+
+-----Changed upset if-----
+to------- if(diff >= upset) 
+from----- if(diff <= upset)
+
+-----Nerfed upset -----
+to------- 2 times greater than diff
+from----- 2.5 times greater than diff
+
+-----Changed "Can not bet yet..." to a fancy initializing tracker text-----
+
+-----Added match counter-----
+
+
+
+
+
+
+
+
+
+------------------LOSE ERROR------------------
+-loss msg occurs on win
+-likely due to postbal not being correct
+-make sure to +/- on vars that wont change
+------------PREVIOUS MATCH BALANCE------------
+
+Your current balance is: 259208 Winstreak: -1
+----------------------------------------------
+New match detected.
+Current fighters: Phobos vs Black polnareff
+Your current balance is: 265059 Winstreak: 1
+Win:+5851
+----------------------------------------------
+diff = globalPrebal -= postbal
+//VARS BEFORE MATH\\
+diff: 5851 globalPrebal: 259208 postbal: 5851
+Loss:-253357
+//VARS AFTER MATH\\
+diff: 253357 globalPrebal: 253357 postbal: 5851
+----------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+prebal = globalBal //
+postbal = //balance after win/loss
+diff = the difference between prebal and postbal
+
+---------WIN---------
+if prebal < postbal
+postbal - prebal = diff
+console.log("You made: " +diff)
+
+7049	- prebal
+19146	- postbal
+
+difference = 12097
+
+
+---------Loss--------
+if postbal < prebal
+prebal - postbal = diff
+console.log("You lost: " +diff)
+
+7049	- prebal
+3900	- postbal
+
+difference = 3149
+
+------------------Upset calc------------------
+if diff < diff * 3
+console.log("UPSET")
+
+----------------------OR----------------------
+var upset = diff * 3
+if(diff <= upset)
+{
+	console.log("UPSET")
+	countUpset +=1
+	console.log("Your current balance is: " +balance+ " Winstreak: " +winstreak+ " Upsets this session: " +countUpset);
+}
+
+
+
+
+
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^UPSET^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------[INITIALIZING TRACKER]------------------------
+-----------------------------------------------------------------------
+
+Your current balance is: 276,485 Winstreak: -1 Upsets this session: 99
+
+
+
+
+
+console.log("Your current balance is: " +balance+ " Winstreak: " +winstreak+ " Upsets this session: " +upsetcount+ " Matches this session: " +matchcount);
+
+
+

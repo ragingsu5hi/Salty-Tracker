@@ -1,0 +1,36 @@
+{
+	"name":"Salty Tracker",
+	"short_name":"Salty Tracker",
+	"description":"Tracks some cool things.",
+	"version":"1",
+	"manifest_version":2,
+	"permissions":
+	[
+		"http://mugen.saltybet.com/",
+		"https://mugen.saltybet.com/",
+		"http://www.saltybet.com/",
+		"https://www.saltybet.com/"
+	],
+	"content_scripts":
+	[
+		{
+			"js":
+			[
+				"js/saltyTracker.js"
+			],
+			"matches":
+			[
+				"http://mugen.saltybet.com/",
+				"https://mugen.saltybet.com/",
+				"http://www.saltybet.com/",
+				"https://www.saltybet.com/"
+			],
+			"run_at":"document_end"
+		}
+	],
+	"icons":
+	{
+		"16":"images/favicon-16x16.png",
+		"128":"images/favicon-32x32.png"
+	}
+}
