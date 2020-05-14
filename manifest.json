@@ -1,6 +1,6 @@
 {
-	"name":"Salty Tracker",
-	"short_name":"Salty Tracker",
+	"name":"saltyTracker",
+	"short_name":"saltyTracker",
 	"description":"Tracks some cool things.",
 	"version":"1",
 	"manifest_version":2,
