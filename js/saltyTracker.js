@@ -2,7 +2,7 @@ var p1_button = null;
 var p2_button = null;
 var last_update = {player1:"",player2:""}
 
-
+var winstreak = document.getElementById("betStreak").innerHTML; //winrate
 var balance = document.getElementById("balance").innerHTML; //grabs balance from html
 var balnocomma = balance.replace(/,/g,""); //removes the comma
 var bal = parseInt(balnocomma, 10); //changes string to int for math
@@ -23,10 +23,7 @@ function update()
     var balance = document.getElementById("balance").innerHTML; //grabs balance from html
     var balnocomma = balance.replace(/,/g,""); //removes the comma
     var bal = parseInt(balnocomma, 10); //changes string to int
-    //console.log("INITIAL")
-    //console.log("globalBal: " +globalBal+ " globalPrebal: " +globalPrebal+ " globalPostbal: " +globalPostbal)
-    //console.log("bal: " +bal+ " prebal: " +prebal+ " postbal: " +postbal)
-    //console.log("----------------------------------------------")
+
     p1_button = document.getElementById("player1");
     p2_button = document.getElementById("player2");
     var player1 = p1_button.value;
@@ -36,15 +33,15 @@ function update()
         {
             if(logcount <= 1)
                 {
-                    console.log('%c-------------------------[INITIALIZING TRACKER]------------------------', 'background: #222; color: #bada55');
+                    console.log('%c------------------------------------[INITIALIZING TRACKER]-----------------------------------', 'background: #222; color: #bada55');
                     console.log("Your current balance is: " +balance+ " Winstreak: " +winstreak);
-                    console.log("-----------------------------------------------------------------------");
+                    console.log("---------------------------------------------------------------------------------------------");
                     logcount += 1
-                    setInterval(update,15000)
+                    setInterval(update,45000)
                 }
             else
                 {
-                    setInterval(update,15000)
+                    setInterval(update,45000)
                 }
         }
     ///Compares current players to last players and adds to logcount so it doesn't post to console too often.
@@ -53,7 +50,7 @@ function update()
             if(logcount <= 1)
                 {
                     logcount += 1
-                    setInterval(update,30000)
+                    setInterval(update,45000)
                 }
             else
                 {
@@ -69,10 +66,7 @@ function update()
             logcount = 0;
             console.log("New match detected.");
             console.log("Current fighters: " +player1+ " vs " +player2);
-            //console.log("Your current balance is: " +balance+ " Winstreak: " +winstreak);
-            //console.log("----------------------------------------------");
-            //Below we will do the math to equate the salt won and lost
-////It may be easier to track the change in winstreak to decide whether we won or lost than to check the change in balance\\\\
+
             var prebal = globalBal;
             var postbal = bal;
             
@@ -83,46 +77,39 @@ function update()
                     var diff = null;
                     diff = postbal -= prebal;
                     console.log("Win:+" +diff+ " from: "+globalPrebal);
-                    //console.log("diff = postbal -= globalPrebal")
-                    //console.log("----------------------------------------------")
+
                 }
             //Lost match
             if(globalPrebal > bal)
                 {
-                    //console.log("Loss");
-                    //console.log("diff = prebal -= postbal")
-                    //console.log("diff: " +diff+ " globalPrebal: " +prebal+ " postbal: " +postbal)
+
                     var diff = null;
                     diff = prebal -= postbal;
                     console.log("Loss:-" +diff+ " from: "+globalPrebal);
-                    //console.log("diff: " +diff+ " prebal: " +prebal+ " postbal: " +postbal)
-                    //console.log("----------------------------------------------")
+
                 }
             //No change in salt
             if(globalPrebal == bal)
                 {
                     console.log("Your salt didn't change.");
-                    //console.log("----------------------------------------------")
+
                 }
             //Upset tracker
             var upset = diff * 2;
-            //console.log("diff: " +diff+ " upset threshold: " +upset);
+            console.log("diff: " +diff+ " upset threshold: " +upset);
             //simulate upset
             //diff += diff * 3;
             if(diff >= upset)
                 {
                     upsetcount += 1;
                     console.log("Your current balance is: " +balance+ " Winstreak: " +winstreak+ " Upsets this session: " +upsetcount+ " Matches this session: " +matchcount);
-                    console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^UPSET^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+                    console.log('%c^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^UPSET^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^', 'background: #222; color: #bada55');
                 }
             else
                 {
                     console.log("Your current balance is: " +balance+ " Winstreak: " +winstreak+ " Upsets this session: " +upsetcount+ " Matches this session: " +matchcount);
                 }
-            console.log("-----------------------------------------------------------------------");
-            //console.log("----------------------------------------------")
-            //console.log("globalBal: " +globalBal+ " globalPrebal: " +globalPrebal+ " prebal: " +prebal+ " postbal: " +postbal+ " diff: " +diff)
-            //console.log("----------------------------------------------")
+            console.log("---------------------------------------------------------------------------------------------");
             //Below we will update all variables that have changed.
             globalBal = bal; //balance
             globalPrebal = bal; //balance before win/loss
