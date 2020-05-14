@@ -15,10 +15,10 @@ var matchcount = -1; //counts matches
 
 
 setTimeout(update,9000)
+console.log('%c------------------------------------[INITIALIZING TRACKER]-----------------------------------', 'background: #222; color: #bada55');
 ///Checks for a new match and if betting is available
 function update()
 {
-    console.log('%c------------------------------------[INITIALIZING TRACKER]-----------------------------------', 'background: #222; color: #bada55');
     //Local balance variables
     var winstreak = document.getElementById("betStreak").innerHTML; //winrate
     var balance = document.getElementById("balance").innerHTML; //grabs balance from html
